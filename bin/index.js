@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const helper = require('../src/helper');
 
 const ALLOWED_ARGS = {
