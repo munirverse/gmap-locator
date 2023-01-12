@@ -27,6 +27,9 @@
     "prettier": "^2.8.2",
     "semantic-release": "^20.0.2"
   },
+  "bin": {
+    "gmap-locator": "./bin"
+  },
   "scripts": {
     "commit": "cz",
     "prepare": "husky install",
@@ -72,7 +75,8 @@
             "CallExpression"
           ]
         }
-      ]
+      ],
+      "valid-typeof": "off"
     }
   },
   "prettier": {
