@@ -1,3 +1,5 @@
+const path = require('path');
+const fs = require('fs');
 const helper = require('../../../src/helper');
 
 describe('test helper module', () => {
@@ -5,15 +7,7 @@ describe('test helper module', () => {
     // Given
     const exampleArgs = [null, null, '-h'];
     const exampleArgs2 = [null, null, '-i', 'test.csv', '-o', 'output.csv'];
-    const exampleArgs3 = [
-      null,
-      null,
-      '-h',
-      '-i',
-      'test.csv',
-      '-o',
-      'output.csv'
-    ];
+    const exampleArgs3 = [null, null, '-h', '-i', 'test.csv', '-o', 'output.csv'];
 
     // When
     const args = helper.extraArgs(exampleArgs);
@@ -29,6 +23,7 @@ describe('test helper module', () => {
       '-o': 'output.csv'
     });
   });
+
   it('test function validateArgs', () => {
     // Given
     const allowedArgs = { '-i': 'string', '-o': 'string', '-h': 'boolean' };
@@ -53,5 +48,24 @@ describe('test helper module', () => {
     expect(result2).toBe(false);
     expect(result3).toBe(false);
     expect(result4).toBe(false);
+  });
+
+  it('test function loadCSV and loadJSON', () => {
+    // Given
+    const expectedResult = [
+      ['John Doe', 13],
+      ['Mark', 22],
+      ['Louis C.', 20]
+    ];
+    const exampleCSV = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.csv'));
+    const exampleJSON = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.json'));
+
+    // When
+    const csv = helper.loadCSV(exampleCSV);
+    const json = helper.loadJSON(exampleJSON);
+
+    // Then
+    expect(csv).toMatchObject(expectedResult);
+    expect(json).toMatchObject(expectedResult);
   });
 });
