@@ -28,7 +28,9 @@
     "semantic-release": "^20.0.2"
   },
   "main": "./bin/index.js",
-  "bin": "./bin/index.js",
+  "bin": {
+    "gmap-locator": "./bin/index.js"
+  },
   "scripts": {
     "commit": "cz",
     "prepare": "husky install",
