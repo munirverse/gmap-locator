@@ -36,7 +36,7 @@
     "prepare": "husky install",
     "lint": "eslint --fix --no-error-on-unmatched-pattern \"**/*.js\"",
     "format": "prettier -w .",
-    "test": "jest --runInBand --coverage ./test",
+    "test": "jest --runInBand ./test",
     "semantic-release": "semantic-release"
   },
   "engines": {
@@ -112,5 +112,9 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "jest": {
+    "testTimeout": 10000,
+    "collectCoverage": true
   }
 }
