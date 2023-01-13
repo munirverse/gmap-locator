@@ -56,9 +56,9 @@ describe('test helper module', () => {
   it('test function loadCSV and loadJSON', () => {
     // Given
     const expectedResult = [
-      ['John Doe', 13],
-      ['Mark', 22],
-      ['Louis C.', 20]
+      ['Indonesia', 'Jl. Sukmawati no.25'],
+      ['SG', 'Rice Hanian St. 20'],
+      ['PH', 'Boulevard City St.']
     ];
     const exampleCSV = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.csv'));
     const exampleJSON = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.json'));
