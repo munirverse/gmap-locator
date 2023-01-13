@@ -8,11 +8,13 @@ describe('test helper module', () => {
     const exampleArgs = [null, null, '-h'];
     const exampleArgs2 = [null, null, '-i', 'test.csv', '-o', 'output.csv'];
     const exampleArgs3 = [null, null, '-h', '-i', 'test.csv', '-o', 'output.csv'];
+    const exampleArgs4 = [null, null, '-i', './test-folder/test.csv'];
 
     // When
     const args = helper.extraArgs(exampleArgs);
     const args2 = helper.extraArgs(exampleArgs2);
     const args3 = helper.extraArgs(exampleArgs3);
+    const args4 = helper.extraArgs(exampleArgs4);
 
     // Then
     expect(args).toMatchObject({ '-h': true });
@@ -22,6 +24,7 @@ describe('test helper module', () => {
       '-i': 'test.csv',
       '-o': 'output.csv'
     });
+    expect(args4).toMatchObject({ '-i': './test-folder/test.csv' });
   });
 
   it('test function validateArgs', () => {
