@@ -1,8 +1,7 @@
-const isExistsAndNotIncude = (itemArr, chars) =>
-  itemArr && !itemArr?.includes(chars) ? itemArr : true;
+const isExistsAndNotMatch = (itemArr) => (itemArr && !/^-\w+$/.test(itemArr) ? itemArr : true);
 
 const reduceArgs = (prev, curr, i, arr) =>
-  curr.includes('-') ? { ...prev, [curr]: isExistsAndNotIncude(arr[i + 1], '-') } : prev;
+  /^-\w+$/.test(curr) ? { ...prev, [curr]: isExistsAndNotMatch(arr[i + 1]) } : prev;
 
 const extraArgs = (argv) => (argv?.length > 2 ? argv.slice(2).reduce(reduceArgs, {}) : null);
 
