@@ -1,5 +1,5 @@
 [
-  { "name": "John Doe", "age": 13 },
-  { "name": "Mark", "age": 22 },
-  { "name": "Louis C.", "age": 20 }
+  { "country": "Indonesia", "address": "Jl. Sukmawati no.25" },
+  { "country": "SG", "address": "Rice Hanian St. 20" },
+  { "country": "PH", "address": "Boulevard City St." }
 ]
