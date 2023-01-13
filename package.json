@@ -114,7 +114,11 @@
     }
   },
   "jest": {
-    "testTimeout": 10000,
+    "verbose": true,
+    "testTimeout": 15000,
     "collectCoverage": true
+  },
+  "dependencies": {
+    "puppeteer": "^19.5.2"
   }
 }
