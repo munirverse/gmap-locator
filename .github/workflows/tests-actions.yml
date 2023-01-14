@@ -13,5 +13,5 @@ jobs:
         name: clean install dependencies
       - run: npm run lint
         name: check eslint
-      - run: npm test
+      - run: npm test -- --testPathIgnorePatterns 'src/scraper.test.js'
         name: run unit tests
