@@ -56,9 +56,9 @@ describe('test helper module', () => {
   it('test function loadCSV and loadJSON', () => {
     // Given
     const expectedResult = [
-      ['Indonesia', 'Jl. Sukmawati no.25'],
-      ['SG', 'Rice Hanian St. 20'],
-      ['PH', 'Boulevard City St.']
+      ['Indonesia', 'Jl. Jend. Sudirman'],
+      ['SG', 'Bartley Rd East'],
+      ['PH', 'Pedro Gil St']
     ];
     const exampleCSV = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.csv'));
     const exampleJSON = fs.readFileSync(path.resolve(__dirname, '../../fixtures/example.json'));
@@ -70,5 +70,33 @@ describe('test helper module', () => {
     // Then
     expect(csv).toMatchObject(expectedResult);
     expect(json).toMatchObject(expectedResult);
+  });
+
+  it('test function writeJSON and writeCSV', () => {
+    // Given
+    const exampleData = [
+      { fields_original: 'EG', fields_converted: 'Egypt', data_url: false, lat: false, lng: false }
+    ];
+    const exampleCSVData =
+      'fields_original,fields_converted,data_url,lat,lng\nEG,Egypt,false,false,false';
+
+    // When
+    helper.writeCSV(exampleData, path.resolve(__dirname, '../../fixtures/test.csv'));
+    helper.writeJSON(exampleData, path.resolve(__dirname, '../../fixtures/test.json'));
+
+    // Then
+    expect(fs.existsSync(path.resolve(__dirname, '../../fixtures/test.csv'))).toBe(true);
+    expect(fs.existsSync(path.resolve(__dirname, '../../fixtures/test.json'))).toBe(true);
+    expect(fs.readFileSync(path.resolve(__dirname, '../../fixtures/test.json')).toString()).toBe(
+      JSON.stringify(exampleData)
+    );
+    expect(fs.readFileSync(path.resolve(__dirname, '../../fixtures/test.csv')).toString()).toBe(
+      exampleCSVData
+    );
+  });
+
+  afterAll(() => {
+    fs.rmSync(path.resolve(__dirname, '../../fixtures/test.csv'), { force: true });
+    fs.rmSync(path.resolve(__dirname, '../../fixtures/test.json'), { force: true });
   });
 });
