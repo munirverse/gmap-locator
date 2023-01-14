@@ -32,8 +32,8 @@ describe('test bin/index.js', () => {
 
   it('should print help message', async () => {
     // Given
-    const HELP_MESSAGE_LITERAL = `Usage: gmap-locator [arguments]
-Example: npx gmap-locator -i test.csv -o output.csv
+    const HELP_MESSAGE_LITERAL = `Usage: gmap-locator [INPUT_ARGUMENTS] [INPUT_FILEPATH] [OUTPUT_ARGUMENTS] [OUTPUT_FILEPATH]
+Example: gmap-locator -i countries.csv -o output.csv
 Arguments:
     -h      print help command and list of arguments
     -i      filepath and filename of input files
