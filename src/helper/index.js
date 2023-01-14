@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const isExistsAndNotMatch = (itemArr) => (itemArr && !/^-\w+$/.test(itemArr) ? itemArr : true);
 
 const reduceArgs = (prev, curr, i, arr) =>
@@ -23,4 +25,12 @@ const loadCSV = (bufferCSV, delimiter = ',') =>
 const loadJSON = (bufferJSON) =>
   JSON.parse(bufferJSON.toString()).map((item) => Object.values(item));
 
-module.exports = { extraArgs, validateArgs, loadCSV, loadJSON };
+const writeJSON = (data, filePath) => fs.writeFileSync(filePath, JSON.stringify(data));
+
+const writeCSV = (data, filePath) => {
+  let txt = Object.keys(data[0]).join(',') + '\n';
+  txt += data.map((item) => Object.values(item).join(',')).join('\n');
+  fs.writeFileSync(filePath, txt);
+};
+
+module.exports = { extraArgs, validateArgs, loadCSV, loadJSON, writeJSON, writeCSV };
