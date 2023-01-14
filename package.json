@@ -5,6 +5,16 @@
     "name": "Munir AP",
     "url": "https://munirapp.github.io"
   },
+  "keywords": [
+    "maps",
+    "location",
+    "country",
+    "google maps",
+    "latitude",
+    "longitudde",
+    "coordinate",
+    "lontarscript"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
